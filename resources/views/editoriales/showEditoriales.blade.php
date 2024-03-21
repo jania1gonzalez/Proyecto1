@@ -8,16 +8,16 @@
 </head>
 <div class="nav">
     <a href="../index.php">Inicio</a>
-    <a href="{{ route('editoriales.create') }}">Formulario</a>
-    <a href="{{ route('editoriales.index') }}">Listado Formulario</a>
+    <a href="{{ route('editorial.create') }}">Formulario</a>
+    <a href="{{ route('editorial.index') }}">Listado Formulario</a>
 </div>
 <body>
-    <h1>Comentario Id{{ $editoriales -> id }}</h1>
+    <h1>Comentario Id{{ $editorial -> id }}</h1>
     <ul>
-        <li>Nombre: {{ $editoriales->nombre }}</li>
-        <li>Correo: {{ $editoriales->correo }}</li>
-        <li>Comentario: {{ $editoriales->editoriales }}</li>
-        <li>Ciudad {{ $editoriales->ciudad }}</li>
+        <li>Nombre: {{ $editorial->nombre }}</li>
+        <li>Correo: {{ $editorial->correo }}</li>
+        <li>Comentario: {{ $editorial->editorial }}</li>
+        <li>Ciudad {{ $editorial->ciudad }}</li>
     </ul>
 </body>
 </html>

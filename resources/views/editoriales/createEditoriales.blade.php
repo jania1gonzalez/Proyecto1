@@ -9,12 +9,12 @@
         <link rel="stylesheet" href="estilos.css">
     </head>
     <body class="bd">
-        <form method="POST" action="/editoriales">
+        <form method="POST" action="/editorial">
         @csrf
         <div class="nav">
             <a href="../index.php">Inicio</a>
-            <a href="{{ route('editoriales.create') }}">Formulario</a>
-            <a href="{{ route('editoriales.index') }}">Listado Formulario</a>
+            <a href="{{ route('editorial.create') }}">Formulario</a>
+            <a href="{{ route('editorial.index') }}">Listado Formulario</a>
         </div>
 
 

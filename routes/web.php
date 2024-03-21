@@ -6,8 +6,8 @@ use App\Http\Controllers\SitioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Comentario;
-use App\Models\Libros;
-use App\Models\Editoriales;
+use App\Models\libro;
+use App\Models\Editorial;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,26 +36,31 @@ Route::post('/contacto', [ComentarioController::class, 'store']);
 
 Route::resource('comentario', ComentarioController::class);
 
-///fin de comentario e inicio de libros
+///fin de comentario e inicio de libro
 
-Route::get('libros', function () {
-    return view('libros.createLibros');
+Route::get('libro', function () {
+    return view('libro.createLibros');
 });
 
-Route::get('/libros', [LibrosController::class, 'create']);
+Route::get('/libro', [LibrosController::class, 'create']);
 
-Route::post('/libros', [LibrosController::class, 'store']);
+Route::post('/libro', [LibrosController::class, 'store']);
 
-Route::resource('libros', LibrosController::class);
+Route::resource('libro', LibrosController::class);
 
-/// fin de libros e inicio de editoriales
+Route::put('libro/{libro}', 'LibrosController@update')->name('libro.update');
 
-Route::get('editoriales', function () {
-    return view('editoriales.createEditoriales');
+
+/// fin de libro e inicio de editoriales
+
+Route::get('editorial', function () {
+    return view('editorial.createEditoriales');
 });
 
-Route::get('/editoriales', [EditorialesController::class, 'create']);
+Route::get('/editorial', [EditorialesController::class, 'create']);
 
-Route::post('/editoriales', [EditorialesController::class, 'store']);
+Route::post('/editorial', [EditorialesController::class, 'store']);
 
-Route::resource('editoriales', EditorialesController::class);
+Route::resource('editorial', EditorialesController::class);
+
+Route::put('editorial/{editorial}', 'EditorialesController@update')->name('editorial.update');

@@ -10,8 +10,8 @@
 
     <div class="nav">
         <a href="index.php">Inicio</a>
-        <a href="{{ route('editoriales.create') }}">Formulario</a>
-        <a href="{{ route('editoriales.index') }}">Listado Formulario</a>
+        <a href="{{ route('editorial.create') }}">Formulario</a>
+        <a href="{{ route('editorial.index') }}">Listado Formulario</a>
     </div>
     <h1>Listado de Editoriales</h1>
 
@@ -32,9 +32,9 @@
                 <td>{{ $editoriales->correo }}</td>
                 <td>{{ $editoriales->created_at }}</td>
                 <td>
-                    <a href="{{ route('editoriales.show', $editoriales) }}">Ver </a>|
-                    <a href="{{ route('editoriales.edit', $editoriales) }}">Edit</a>|
-                    <form action=" {{ route('editoriales.destroy', $editoriales) }} " method="POST">
+                    <a href="{{ route('editorial.show', $editoriales) }}">Ver </a>|
+                    <a href="{{ route('editorial.edit', $editoriales) }}">Edit</a>|
+                    <form action=" {{ route('editorial.destroy', $editoriales) }} " method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Eliminar">

@@ -9,13 +9,13 @@
         <link rel="stylesheet" href="estilos.css">
     </head>
     <body class="bd">
-        <form action="{{ route('editoriales.update', $editoriales) }}" method="POST" action="/editoriales">
+        <form action="{{ route('editorial.update', $editorial) }}" method="POST" action="/editorial">
         @csrf
         @method('PATCH')
         <div class="nav">
             <a href="../../index.php">Inicio</a>
-            <a href="{{ route('editoriales.create') }}">Formulario</a>
-            <a href="{{ route('editoriales.index') }}">Listado Formulario</a>
+            <a href="{{ route('editorial.create') }}">Formulario</a>
+            <a href="{{ route('editorial.index') }}">Listado Formulario</a>
         </div>
 
         //Validacion
@@ -25,10 +25,10 @@
         <h1>Editoriales</h1>
 
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" value="{{ $editoriales->nombre }}" value="{{ old ('nombre') }}"required>
+            <input type="text" id="nombre" name="nombre" value="{{ $editorial->nombre }}" value="{{ old ('nombre') }}"required>
     
             <label for="correo">Correo:</label>
-            <input type="email" id="correo" name="correo" value="{{ $editoriales->correo }}" value="{{ old ('correo')}}" required>
+            <input type="email" id="correo" name="correo" value="{{ $editorial->correo }}" value="{{ old ('correo')}}" required>
     
             <label>Género:</label>
             <input type="radio" id="genero-masculino" name="genero" value="masculino" required>
@@ -43,9 +43,9 @@
             <textarea id="comentario" name="comentario" rows="4" value="{{ old ('comentario')}}"required></textarea>   
             <label for="ciudad">Ciudad:</label>
             <select id="ciudad" name="ciudad">
-                <option value="guadalajara" @selected($editoriales->ciudad == 'guadalajara')>Guadalajara</option>
-                <option value="zapopan" @selected($editoriales->ciudad == 'zapopan')>Zapopan</option>
-                <option value="tonala" @selected($editoriales->ciudad == 'tonala')>Tonalá</option>
+                <option value="guadalajara" @selected($editorial->ciudad == 'guadalajara')>Guadalajara</option>
+                <option value="zapopan" @selected($editorial->ciudad == 'zapopan')>Zapopan</option>
+                <option value="tonala" @selected($editorial->ciudad == 'tonala')>Tonalá</option>
                 <option value="otra">Otra</option>
             </select>
     

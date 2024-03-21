@@ -8,16 +8,18 @@
 </head>
 <div class="nav">
     <a href="../index.php">Inicio</a>
-    <a href="{{ route('libros.create') }}">Formulario</a>
-    <a href="{{ route('libros.index') }}">Listado Formulario</a>
-</div>
+    <a href="{{ route('libro.create') }}">Formulario Libros</a>
+    <a href="{{ route('libro.index') }}">Listado Libros</a>
+</div>    
 <body>
-    <h1>Comentario Id{{ $libros -> id }}</h1>
+    <h1>Libros Id {{ $libro -> id }} </h1>
     <ul>
-        <li>Nombre: {{ $libros->nombre }}</li>
-        <li>Correo: {{ $libros->correo }}</li>
-        <li>Comentario: {{ $libros->libros }}</li>
-        <li>Ciudad {{ $libros->ciudad }}</li>
+        <li>Nombre: {{ $libro->nombre }}</li>
+        <li>Autor Id: {{ $libro->id_autor }}</li>
+        <li>Unidades: fisicas: {{ $libro->unidades_fisicas }}</li>
+        <li>Sinopsis: {{ $libro->sinopsis }}</li>
+        <li>Genero: {{ $libro->genero }}</li>
+        <li>Virtual: {{ $libro->virtual }}</li>
     </ul>
-</body>
+</body>    
 </html>

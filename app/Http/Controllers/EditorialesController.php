@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Editoriales;
+use App\Models\Editorial;
 use Illuminate\Http\Request;
 
 class EditorialesController extends Controller
@@ -12,7 +12,7 @@ class EditorialesController extends Controller
      */
     public function index()
     {
-        $editoriales = Editoriales::all();
+        $editoriales = Editorial::all();
         return view('editoriales.indexEditoriales', compact ('editoriales'));
         
     }
@@ -35,16 +35,16 @@ class EditorialesController extends Controller
         $validated= $request->validate([
             'nombre'  => 'required',
             'correo'  => 'required|email',
-            'editoriales' =>'required',
+            'comentario' =>'required',
             'ciudad'  => 'required',
         ]);
 
-        $editoriales = new Editoriales(); 
-        $editoriales->nombre=$request->nombre;
-        $editoriales->correo=$request->correo;
-        $editoriales->comentario=$request->comentario;
-        $editoriales->ciudad=$request->ciudad;
-        $editoriales->save(); 
+        $editorial = new Editorial(); 
+        $editorial->nombre=$request->nombre;
+        $editorial->correo=$request->correo;
+        $editorial->comentario=$request->comentario;
+        $editorial->ciudad=$request->ciudad;
+        $editorial->save(); 
     
     
         return redirect()->back();
@@ -54,24 +54,24 @@ class EditorialesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Editoriales $editoriales)
+    public function show(Editorial $editorial)
     {
 
-        return view ('editoriales.showEditoriales', compact('editoriales'));
+        return view ('editoriales.showEditoriales', compact('editorial'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Editoriales $editoriales)
+    public function edit(Editorial $editorial)
     {
-        return view ('editoriales.editEditoriales', compact ('editoriales'));
+        return view ('editoriales.editEditoriales', compact ('editorial'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Editoriales $editoriales) // request es lo que recibe de la web y el editoriales es la informacion de la BD
+    public function update(Request $request, Editorial $editorial) // request es lo que recibe de la web y el editoriales es la informacion de la BD
     {
 
         //Validacion
@@ -79,25 +79,24 @@ class EditorialesController extends Controller
         $validated= $request->validate([
             'nombre'  => 'required',
             'correo'  => 'required|email',
-            'editoriales' =>'required',
             'ciudad'  => 'required',
         ]);
         
-        $editoriales->nombre=$request->nombre;
-        $editoriales->correo=$request->correo;
-        $editoriales->comentario=$request->comentario;
-        $editoriales->ciudad=$request->ciudad;
-        $editoriales->save(); 
+        $editorial->nombre=$request->nombre;
+        $editorial->correo=$request->correo;
+        $editorial->comentario=$request->comentario;
+        $editorial->ciudad=$request->ciudad;
+        $editorial->save(); 
 
-        return redirect()->route('editoriales.show',$editoriales);
+        return redirect()->route('editorial.show',$editorial);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Editoriales $editoriales)
+    public function destroy(Editorial $editorial)
     {
-        $editoriales->delete();
-        return redirect()->route('editoriales.index');
+        $editorial->delete();
+        return redirect()->route('editorial.index');
     }
 }
