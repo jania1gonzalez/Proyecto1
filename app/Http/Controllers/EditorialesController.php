@@ -34,16 +34,16 @@ class EditorialesController extends Controller
         
         $validated= $request->validate([
             'nombre'  => 'required',
-            'correo'  => 'required|email',
+            'domicilio'  => 'required',
             'comentario' =>'required',
-            'ciudad'  => 'required',
+            'telefono'  => 'numeric',
         ]);
 
         $editorial = new Editorial(); 
         $editorial->nombre=$request->nombre;
-        $editorial->correo=$request->correo;
+        $editorial->domicilio=$request->domicilio;
         $editorial->comentario=$request->comentario;
-        $editorial->ciudad=$request->ciudad;
+        $editorial->telefono=$request->telefono;
         $editorial->save(); 
     
     
@@ -78,14 +78,14 @@ class EditorialesController extends Controller
         
         $validated= $request->validate([
             'nombre'  => 'required',
-            'correo'  => 'required|email',
-            'ciudad'  => 'required',
+            'domicilio'  => 'required',
+            'telefono'  => 'required',
         ]);
         
         $editorial->nombre=$request->nombre;
-        $editorial->correo=$request->correo;
+        $editorial->domicilio=$request->domicilio;
         $editorial->comentario=$request->comentario;
-        $editorial->ciudad=$request->ciudad;
+        $editorial->telefono=$request->telefono;
         $editorial->save(); 
 
         return redirect()->route('editorial.show',$editorial);

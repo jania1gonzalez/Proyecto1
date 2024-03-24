@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Comentario;
 use App\Models\libro;
 use App\Models\Editorial;
+use App\Models\login;
+use App\Models\index;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +24,9 @@ use App\Models\Editorial;
 Route::get('/',function (){
     return view('welcome');
 });
+
+
+
 
 Route::get('formulario', function () {
     return view('comentario.formulario');
@@ -64,3 +69,12 @@ Route::post('/editorial', [EditorialesController::class, 'store']);
 Route::resource('editorial', EditorialesController::class);
 
 Route::put('editorial/{editorial}', 'EditorialesController@update')->name('editorial.update');
+
+/// login
+Route::get('/',function (){
+    return view('login');
+});
+
+Route::get('/',function (){
+    return view('index');
+});

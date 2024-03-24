@@ -52,9 +52,11 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Correo</th>
+                <th>Domicilio</th>
                 <th>Fecha</th>
+                <th>telefono</th>
                 <th>Acciones</th>
+                
 
             </tr>
         </thead>
@@ -62,8 +64,10 @@
             @foreach ($editoriales as $editoriales)
             <tr>
                 <td>{{ $editoriales->nombre }}</td>
-                <td>{{ $editoriales->correo }}</td>
+                <td>{{ $editoriales->domicilio }}</td>
                 <td>{{ $editoriales->created_at }}</td>
+                <td>{{ $editoriales->telefono }}</td>
+
                 <td>
                     <nav>
                         <div class="d-grid">

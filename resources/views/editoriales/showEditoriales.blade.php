@@ -44,12 +44,12 @@
     </div>
 </nav>
 <body>
-    <h1>Comentario Id{{ $editorial -> id }}</h1>
+    <h1>Editorial id{{ $editorial -> id }}</h1>
     <ul>
         <li>Nombre: {{ $editorial->nombre }}</li>
-        <li>Correo: {{ $editorial->correo }}</li>
-        <li>Comentario: {{ $editorial->editorial }}</li>
-        <li>Ciudad {{ $editorial->ciudad }}</li>
+        <li>Domicilio: {{ $editorial->domicilio }}</li>
+        <li>Comentario: {{ $editorial->comentario }}</li>
+        <li>Telefono: {{ $editorial->telefono }}</li>
     </ul>
 </body>
 </html>
