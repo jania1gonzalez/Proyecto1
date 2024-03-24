@@ -4,41 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Listado</title>
 </head>
 <body>
 
-    <div class="nav">
-        <a href="index.php">Inicio</a>
-        <a href="{{ route('libros.create') }}">Formulario</a>
-        <a href="{{ route('libros.index') }}">Listado Formulario</a>
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Index</a>
+            </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  href="{{ route('libro.index') }}" role="button" data-bs-toggle="dropdown">Libros</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('libro.index') }}">Index Libro</a></li>
+                        <li><a class="dropdown-item" href="{{ route('libro.create') }}">Crear Libro</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{ route('editorial.index') }}" role="button" data-bs-toggle="dropdown">Editoriales</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('editorial.index') }}">Index Editorial</a></li>
+                        <li><a class="dropdown-item" href="{{ route('editorial.create') }}">Crear Editorial</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{ route('comentario.index') }}" role="button" data-bs-toggle="dropdown">Comentarios</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('comentario.index') }}">Index Comentario</a></li>
+                        <li><a class="dropdown-item" href="{{ route('comentario.create') }}">Crear Comentario</a></li
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <h1>Listado de Libros</h1>
+</nav>
 
-    <table border="1">
+    <h1>Listado de libros</h1>
+
+    <table class="table table-striped table-bordered" border="1">
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Correo</th>
+                <th>Sinopsis</th>
                 <th>Fecha</th>
                 <th>Acciones</th>
-
             </tr>
         </thead>
         <tbody>
             @foreach ($libros as $libros)
             <tr>
                 <td>{{ $libros->nombre }}</td>
-                <td>{{ $libros->correo }}</td>
-                <td>{{ $libros->created_at }}</td>
+                <td>{{ $libros->sinopsis }}</td>
+                <td>{{ $libros->created_at }}</td>  
                 <td>
-                    <a href="{{ route('libros.show', $libros) }}">Ver </a>|
-                    <a href="{{ route('libros.edit', $libros) }}">Edit</a>|
-                    <form action=" {{ route('libros.destroy', $libros) }} " method="POST">
+                    <nav >
+                        <div class="d-grid">
+                            <a class="btn btn-outline-info" href="{{ route('libro.show', $libros) }}">Ver </a>
+                        </div>
+                        <div class="d-grid">
+                            <a class="btn btn-outline-info" href="{{ route('libro.edit', $libros) }}">Edit</a>
+                        </div>
+                    </nav>
+                    <form action=" {{ route('libro.destroy', $libros) }} " method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Eliminar">
+                        <div class="d-grid">
+                        <input class="btn btn-danger" type="submit" value="Eliminar" >  
+                        </div>
                     </form>
+                    
                 </td>
             </tr>           
 

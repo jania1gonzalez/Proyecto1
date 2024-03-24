@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('libros', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('correo');
-            $table->text('comentario');
-            $table->string('ciudad');
+            $table->decimal('id_autor');
+            $table->decimal('unidades_fisicas');
+            $table->string('sinopsis');
+            $table->string('genero');
+            $table->boolean('virtual');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('libros');
+        //
     }
 };

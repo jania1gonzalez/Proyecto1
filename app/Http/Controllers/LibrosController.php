@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Libros;
+use App\Models\Libro;
 use Illuminate\Http\Request;
 
 class LibrosController extends Controller
@@ -12,7 +12,7 @@ class LibrosController extends Controller
      */
     public function index()
     {
-        $libros = Libros::all();
+        $libros = Libro::all();
         return view('libros.indexLibros', compact ('libros'));
         
     }
@@ -34,17 +34,23 @@ class LibrosController extends Controller
         
         $validated= $request->validate([
             'nombre'  => 'required',
-            'correo'  => 'required|email',
-            'libros' =>'required',
-            'ciudad'  => 'required',
+            'id_autor'  => 'numeric',
+            'unidades_fisicas' =>'required',
+            'sinopsis'  => 'required',
         ]);
 
-        $libros = new Libros(); 
-        $libros->nombre=$request->nombre;
-        $libros->correo=$request->correo;
-        $libros->comentario=$request->comentario;
-        $libros->ciudad=$request->ciudad;
-        $libros->save(); 
+        $libro = new Libro(); 
+        $libro->nombre=$request->nombre;
+        $libro->id_autor=$request->id_autor;
+        $libro->sinopsis=$request->sinopsis;
+        $libro->unidades_fisicas=$request->unidades_fisicas;
+        $libro->genero=$request->genero;
+        if ($libro->virtual == true) {
+            $libro->virtual=true;
+        }else{
+            $libro->virtual=false;
+        }
+        $libro->save(); 
     
     
         return redirect()->back();
@@ -54,50 +60,51 @@ class LibrosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Libros $libros)
+    public function show(Libro $libro)
     {
 
-        return view ('libros.showLibros', compact('libros'));
+        return view ('libros.showlibros', compact('libro'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Libros $libros)
+    public function edit(Libro $libro)
     {
-        return view ('libros.editLibros', compact ('libros'));
+        return view ('libros.editLibros', compact ('libro'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Libros $libros) // request es lo que recibe de la web y el libros es la informacion de la BD
+    public function update(Request $request, Libro $libro) // request es lo que recibe de la web y el libro es la informacion de la BD
     {
 
         //Validacion
         
         $validated= $request->validate([
             'nombre'  => 'required',
-            'correo'  => 'required|email',
-            'libros' =>'required',
-            'ciudad'  => 'required',
+            'id_autor'  => 'numeric',
+            'unidades_fisicas' =>'required',
+            'sinopsis'  => 'required',
         ]);
         
-        $libros->nombre=$request->nombre;
-        $libros->correo=$request->correo;
-        $libros->comentario=$request->comentario;
-        $libros->ciudad=$request->ciudad;
-        $libros->save(); 
-
-        return redirect()->route('libros.show',$libros);
+        
+        $libro->nombre=$request->nombre;
+        $libro->id_autor=$request->id_autor;
+        $libro->sinopsis=$request->sinopsis;
+        $libro->unidades_fisicas=$request->unidades_fisicas;
+        $libro->genero=$request->genero;
+        $libro->virtual=$request->virtual;
+        return redirect()->route('libro.show',$libro);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Libros $libros)
+    public function destroy(Libro $libro)
     {
-        $libros->delete();
-        return redirect()->route('libros.index');
+        $libro->delete();
+        return redirect()->route('libro.index');
     }
 }

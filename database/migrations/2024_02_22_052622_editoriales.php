@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('editoriales', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('correo');
+            $table->string('domicilio');
             $table->text('comentario');
-            $table->string('ciudad');
+            $table->string('telefono');
             $table->timestamps();
         });
     }
